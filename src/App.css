@@ -678,3 +678,48 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   display: block;
   justify-items: center;
 }
+@media (max-width: 768px) {
+  /* Adjusting the nav pill layout for smaller screens */
+  .project .nav.nav-pills {
+    flex-direction: column;
+    width: 100%;
+    padding: 0; /* Ensure no padding on the nav container */
+  }
+
+  .project .nav.nav-pills .nav-item {
+    width: 100%;
+    text-align: center;
+    border-radius: 0; /* Ensure no rounded corners */
+  }
+
+  .project .nav.nav-pills .nav-link {
+    font-size: 14px; /* Reduce font size for mobile */
+    padding: 10px 15px;
+    width: 100%; /* Ensure full width for each item */
+    text-align: center;
+    border-radius: 0 !important; /* Force removal of any border-radius */
+    box-shadow: none !important; /* Remove any box shadow that might appear */
+  }
+
+  /* Adjusting the tab content padding for mobile */
+  .project .tab-content {
+    padding: 10px;
+  }
+
+  /* Optional: Adjusting the title and paragraph for better readability */
+  .project h2 {
+    font-size: 32px; /* Smaller font size */
+    text-align: center;
+  }
+
+  .project p {
+    font-size: 16px;
+    width: 90%; /* Make the text more readable by increasing width */
+    margin: 14px auto;
+  }
+
+  .project .nav.nav-pills .nav-link.active {
+    border-radius: 0 !important; /* Remove rounded corners for active links */
+    box-shadow: none !important; /* Ensure no box shadow for active state */
+  }
+}
