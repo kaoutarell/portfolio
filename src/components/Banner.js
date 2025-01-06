@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import headerImg from "../assets/img/header-img-b.svg";
-import { ArrowRightCircle } from "react-bootstrap-icons";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
 
@@ -11,6 +10,7 @@ export const Banner = () => {
   const [text, setText] = useState("");
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const [index, setIndex] = useState(1);
+  const [hasAnimated, setHasAnimated] = useState(false); // Tracks if animation has run
   const toRotate = [
     "Software Engineering Student",
     "Web Developer",
@@ -60,55 +60,68 @@ export const Banner = () => {
   return (
     <section className="banner" id="home">
       <Container>
-        <Row className="aligh-items-center">
+        <Row className="align-items-center">
           <Col xs={12} md={6} xl={7}>
-            <TrackVisibility>
-              {({ isVisible }) => (
-                <div
-                  className={
-                    isVisible ? "animate__animated animate__fadeIn" : ""
-                  }
-                >
-                  <span className="tagline">Welcome to my Portfolio !</span>
-                  <h1>
-                    {`Hello! I'm Kaoutar`}{" "}
-                    <span
-                      className="txt-rotate"
-                      dataPeriod="1000"
-                      data-rotate='[ "Software Engineering Student", "Web Developer", "Web Designer", "UI/UX Designer", "Database Designer"]'
-                    >
-                      <span className="wrap">{text}</span>
-                    </span>
-                  </h1>
-                  <p>
-                    I am an ambitious software engineering student passionate
-                    about collaboration and continuous improvement. With a
-                    strong foundation in programming and problem-solving, I am
-                    always ready to learn and take on new challenges. I believe
-                    that teamwork and innovation drive success, and I strive to
-                    contribute meaningfully to every project I am part of.
-                  </p>
-                  <p>
-                    Beyond academics, I am open to taking on contracts where I
-                    can apply my skills to create effective and efficient
-                    solutions while furthering my professional growth.
-                  </p>
-                  <p>Let’s build something impactful together!</p>
-                </div>
-              )}
+            <TrackVisibility partialVisibility>
+              {({ isVisible }) => {
+                if (isVisible && !hasAnimated) {
+                  setHasAnimated(true); // Mark animation as done
+                }
+
+                return (
+                  <div
+                    className={
+                      hasAnimated ? "animate__animated animate__fadeIn" : ""
+                    }
+                  >
+                    <span className="tagline">Welcome to my Portfolio!</span>
+                    <h1>
+                      {`Hello! I'm Kaoutar`}{" "}
+                      <span
+                        className="txt-rotate"
+                        dataPeriod="1000"
+                        data-rotate='[ "Software Engineering Student", "Web Developer", "Web Designer", "UI/UX Designer", "Database Designer"]'
+                      >
+                        <span className="wrap">{text}</span>
+                      </span>
+                    </h1>
+                    <p>
+                      I am an ambitious software engineering student passionate
+                      about collaboration and continuous improvement. With a
+                      strong foundation in programming and problem-solving, I am
+                      always ready to learn and take on new challenges. I
+                      believe that teamwork and innovation drive success, and I
+                      strive to contribute meaningfully to every project I am
+                      part of.
+                    </p>
+                    <p>
+                      Beyond academics, I am open to taking on contracts where I
+                      can apply my skills to create effective and efficient
+                      solutions while furthering my professional growth.
+                    </p>
+                    <p>Let’s build something impactful together!</p>
+                  </div>
+                );
+              }}
             </TrackVisibility>
           </Col>
           <Col xs={12} md={6} xl={5}>
-            <TrackVisibility>
-              {({ isVisible }) => (
-                <div
-                  className={
-                    isVisible ? "animate__animated animate__zoomIn" : ""
-                  }
-                >
-                  <img src={headerImg} alt="Header Img" />
-                </div>
-              )}
+            <TrackVisibility partialVisibility>
+              {({ isVisible }) => {
+                if (isVisible && !hasAnimated) {
+                  setHasAnimated(true); // Mark animation as done
+                }
+
+                return (
+                  <div
+                    className={
+                      hasAnimated ? "animate__animated animate__zoomIn" : ""
+                    }
+                  >
+                    <img src={headerImg} alt="Header Img" />
+                  </div>
+                );
+              }}
             </TrackVisibility>
           </Col>
         </Row>
