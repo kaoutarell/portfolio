@@ -60,7 +60,7 @@ export const Projects = () => {
                 projects, including designing database systems, developing game
                 engines in C++, and implementing web app solutions. I have also
                 earned certifications in Azure Fundamentals and am aiming to
-                obtain additional Microsoft technology certifications ✨
+                obtain additional Cyber-Security related Microsoft certifications ✨
               </p>
               <Tab.Container id="projects-tabs" defaultActiveKey="first">
                 <Nav
